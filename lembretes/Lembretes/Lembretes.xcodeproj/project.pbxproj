@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745F88EE2A1D05A900E02831 /* SubtarefasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88ED2A1D05A900E02831 /* SubtarefasView.swift */; };
+		745F88F02A1D069000E02831 /* ListaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88EF2A1D069000E02831 /* ListaView.swift */; };
+		745F88F22A1D08C200E02831 /* EtiquetasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F12A1D08C200E02831 /* EtiquetasView.swift */; };
+		745F88F42A1E2AE000E02831 /* Test1234.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F32A1E2AE000E02831 /* Test1234.swift */; };
+		749F1C912A1CDC5300AE09DA /* DetalhesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749F1C902A1CDC5300AE09DA /* DetalhesView.swift */; };
+		749F1C932A1CDCD600AE09DA /* Project 1 Swift in Resources */ = {isa = PBXBuildFile; fileRef = 749F1C922A1CDCD600AE09DA /* Project 1 Swift */; };
+		749F1C9D2A1CDD1300AE09DA /* Repetir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749F1C9A2A1CDCDB00AE09DA /* Repetir.swift */; };
+		749F1C9E2A1CDD4700AE09DA /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749F1C952A1CDCDB00AE09DA /* ClockView.swift */; };
+		749F1CA02A1CDD4B00AE09DA /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749F1C9C2A1CDCDB00AE09DA /* CalendarView.swift */; };
 		C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA62A1BA9980054563C /* LembretesApp.swift */; };
 		C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA82A1BA9980054563C /* ContentView.swift */; };
 		C54A7EAB2A1BA9990054563C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54A7EAA2A1BA9990054563C /* Assets.xcassets */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		745F88ED2A1D05A900E02831 /* SubtarefasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtarefasView.swift; sourceTree = "<group>"; };
+		745F88EF2A1D069000E02831 /* ListaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaView.swift; sourceTree = "<group>"; };
+		745F88F12A1D08C200E02831 /* EtiquetasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtiquetasView.swift; sourceTree = "<group>"; };
+		745F88F32A1E2AE000E02831 /* Test1234.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1234.swift; sourceTree = "<group>"; };
+		749F1C902A1CDC5300AE09DA /* DetalhesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesView.swift; sourceTree = "<group>"; };
+		749F1C922A1CDCD600AE09DA /* Project 1 Swift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Project 1 Swift"; path = "../../../../../../../Desktop/Project 1 Swift/Project 1 Swift"; sourceTree = "<group>"; };
+		749F1C952A1CDCDB00AE09DA /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		749F1C9A2A1CDCDB00AE09DA /* Repetir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repetir.swift; sourceTree = "<group>"; };
+		749F1C9C2A1CDCDB00AE09DA /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C54A7EA32A1BA9980054563C /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54A7EA62A1BA9980054563C /* LembretesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LembretesApp.swift; sourceTree = "<group>"; };
 		C54A7EA82A1BA9980054563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,7 +69,15 @@
 		C54A7EA52A1BA9980054563C /* Lembretes */ = {
 			isa = PBXGroup;
 			children = (
+				745F88F32A1E2AE000E02831 /* Test1234.swift */,
+				745F88F12A1D08C200E02831 /* EtiquetasView.swift */,
+				745F88EF2A1D069000E02831 /* ListaView.swift */,
+				745F88ED2A1D05A900E02831 /* SubtarefasView.swift */,
+				749F1C902A1CDC5300AE09DA /* DetalhesView.swift */,
+				749F1C9A2A1CDCDB00AE09DA /* Repetir.swift */,
 				C54A7EA62A1BA9980054563C /* LembretesApp.swift */,
+				749F1C952A1CDCDB00AE09DA /* ClockView.swift */,
+				749F1C9C2A1CDCDB00AE09DA /* CalendarView.swift */,
 				C54A7EA82A1BA9980054563C /* ContentView.swift */,
 				C54A7EAA2A1BA9990054563C /* Assets.xcassets */,
 				C54A7EAC2A1BA9990054563C /* Preview Content */,
@@ -62,6 +88,7 @@
 		C54A7EAC2A1BA9990054563C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				749F1C922A1CDCD600AE09DA /* Project 1 Swift */,
 				C54A7EAD2A1BA9990054563C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -126,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54A7EAE2A1BA9990054563C /* Preview Assets.xcassets in Resources */,
+				749F1C932A1CDCD600AE09DA /* Project 1 Swift in Resources */,
 				C54A7EAB2A1BA9990054563C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +166,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */,
+				745F88EE2A1D05A900E02831 /* SubtarefasView.swift in Sources */,
+				745F88F22A1D08C200E02831 /* EtiquetasView.swift in Sources */,
+				745F88F02A1D069000E02831 /* ListaView.swift in Sources */,
+				749F1CA02A1CDD4B00AE09DA /* CalendarView.swift in Sources */,
+				749F1C9E2A1CDD4700AE09DA /* ClockView.swift in Sources */,
+				749F1C912A1CDC5300AE09DA /* DetalhesView.swift in Sources */,
 				C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */,
+				749F1C9D2A1CDD1300AE09DA /* Repetir.swift in Sources */,
+				745F88F42A1E2AE000E02831 /* Test1234.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +311,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +341,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
