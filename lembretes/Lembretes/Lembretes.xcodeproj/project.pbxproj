@@ -10,6 +10,7 @@
 		1E014B9F2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E014B9E2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift */; };
 		1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0324F92A1CDC700086D994 /* HomeView.swift */; };
 		1E3A6AC62A1D042100DEE9D6 /* ReminderListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */; };
+		C51663912A1F8BEF004249FB /* concluido.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51663902A1F8BEF004249FB /* concluido.swift */; };
 		C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA62A1BA9980054563C /* LembretesApp.swift */; };
 		C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA82A1BA9980054563C /* ContentView.swift */; };
 		C54A7EAB2A1BA9990054563C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54A7EAA2A1BA9990054563C /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		1E014B9E2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCategoryCardView.swift; sourceTree = "<group>"; };
 		1E0324F92A1CDC700086D994 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListItemView.swift; sourceTree = "<group>"; };
+		C51663902A1F8BEF004249FB /* concluido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = concluido.swift; path = ../concluido.swift; sourceTree = "<group>"; };
 		C54A7EA32A1BA9980054563C /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54A7EA62A1BA9980054563C /* LembretesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LembretesApp.swift; sourceTree = "<group>"; };
 		C54A7EA82A1BA9980054563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		C54A7EA52A1BA9980054563C /* Lembretes */ = {
 			isa = PBXGroup;
 			children = (
+				C51663902A1F8BEF004249FB /* concluido.swift */,
 				C54A7EA62A1BA9980054563C /* LembretesApp.swift */,
 				C54A7EA82A1BA9980054563C /* ContentView.swift */,
 				1E0324F92A1CDC700086D994 /* HomeView.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */,
 				C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */,
+				C51663912A1F8BEF004249FB /* concluido.swift in Sources */,
 				1E014B9F2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift in Sources */,
 				C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */,
 				1E3A6AC62A1D042100DEE9D6 /* ReminderListItemView.swift in Sources */,
