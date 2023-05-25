@@ -55,16 +55,20 @@ struct HomeView: View {
                                 categoryName: "Concluídos")
                         }
                     }
+                        .listSectionSeparator(.hidden)
                     Section {
                         HStack {
                             Text("Minhas Listas")
                                 .font(.title2.weight(.bold))
                             Spacer()
                         }
-                        .padding(.leading, 12)
+                            .padding(.leading, 12)
                         ReminderListItemView(symbolName: "list.bullet.circle.fill", symbolBackgroundColor: .orange, listName: "Lembretes", numberOfReminders: 0)
                     }
+                        .listSectionSeparator(.hidden)
+                        .listRowSeparator(.hidden)
                     Spacer()
+                        .listSectionSeparator(.hidden)
                 } else {
                     Text("Resultados da Busca")
                 }
