@@ -18,6 +18,7 @@
 		1E41CAAF2A1F98AC00E7F6CC /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA72A1F98AC00E7F6CC /* ClockView.swift */; };
 		1E41CAB02A1F98AC00E7F6CC /* ListaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA82A1F98AC00E7F6CC /* ListaView.swift */; };
 		1E41CAB12A1F98AC00E7F6CC /* Repetir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA92A1F98AC00E7F6CC /* Repetir.swift */; };
+		1E41CABB2A20CCC200E7F6CC /* todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CABA2A20CCC100E7F6CC /* todos.swift */; };
 		C51663912A1F8BEF004249FB /* concluido.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51663902A1F8BEF004249FB /* concluido.swift */; };
 		C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA62A1BA9980054563C /* LembretesApp.swift */; };
 		C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA82A1BA9980054563C /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 		1E41CAA72A1F98AC00E7F6CC /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockView.swift; path = Lembretes/ClockView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA82A1F98AC00E7F6CC /* ListaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListaView.swift; path = Lembretes/ListaView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA92A1F98AC00E7F6CC /* Repetir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repetir.swift; path = Lembretes/Repetir.swift; sourceTree = SOURCE_ROOT; };
+		1E41CABA2A20CCC100E7F6CC /* todos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todos.swift; sourceTree = "<group>"; };
 		C51663902A1F8BEF004249FB /* concluido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = concluido.swift; path = ../concluido.swift; sourceTree = "<group>"; };
 		C54A7EA32A1BA9980054563C /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54A7EA62A1BA9980054563C /* LembretesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LembretesApp.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				1E0324F92A1CDC700086D994 /* HomeView.swift */,
 				1E014B9E2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift */,
 				1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */,
+				1E41CABA2A20CCC100E7F6CC /* todos.swift */,
 				C54A7EAA2A1BA9990054563C /* Assets.xcassets */,
 				C54A7EAC2A1BA9990054563C /* Preview Content */,
 			);
@@ -176,6 +179,7 @@
 				1E41CAAD2A1F98AC00E7F6CC /* EtiquetasView.swift in Sources */,
 				1E41CAAF2A1F98AC00E7F6CC /* ClockView.swift in Sources */,
 				1E41CAB02A1F98AC00E7F6CC /* ListaView.swift in Sources */,
+				1E41CABB2A20CCC200E7F6CC /* todos.swift in Sources */,
 				1E41CAB12A1F98AC00E7F6CC /* Repetir.swift in Sources */,
 				1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */,
 				1E41CAAA2A1F98AC00E7F6CC /* SubtarefasView.swift in Sources */,
