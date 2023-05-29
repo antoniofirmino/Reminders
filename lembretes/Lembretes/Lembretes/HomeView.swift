@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var searchText = ""
+    @State private var searchText = ""
+    @State private var showingNewReminder = false
+    @State private var showingTodosView = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if searchText.isEmpty {
                     Grid(horizontalSpacing: 16, verticalSpacing: 16) {
@@ -37,6 +39,12 @@ struct HomeView: View {
                                         secondary: .gray),
                                 numberOfReminders: 0,
                                 categoryName: "Todos")
+                            .navigationDestination(isPresented: $showingTodosView) {
+                                TodosView()
+                            }
+                            .onTapGesture {
+                                showingTodosView = true
+                            }
                             ReminderCategoryCardView(
                                 symbolName: "flag.circle.fill",
                                 symbolRenderingMode: .multicolor,
@@ -74,10 +82,13 @@ struct HomeView: View {
                 }
             }
             .listStyle(.plain)
+            .sheet(isPresented: $showingNewReminder) {
+                DetalhesView()
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button {
-                        
+                        showingNewReminder = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3.weight(.heavy))
