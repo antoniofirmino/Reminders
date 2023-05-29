@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.text, ascending: true)],
+        animation: .default)
+    private var reminders: FetchedResults<Reminder>
+    
     @State private var searchText = ""
     @State private var showingNewReminder = false
     @State private var showingTodosView = false
@@ -37,7 +45,7 @@ struct HomeView: View {
                                     SymbolForegroundStyle(
                                         primary: .white,
                                         secondary: .gray),
-                                numberOfReminders: 0,
+                                numberOfReminders: reminders.count,
                                 categoryName: "Todos")
                             .navigationDestination(isPresented: $showingTodosView) {
                                 TodosView()
@@ -111,5 +119,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
