@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetalhesView: View {
+struct MiniDetalhesView: View {
     @State private var selectedDate = Date()
     @State private var selectedTime = Date()
     @State private var isCalendarShown = false
@@ -16,10 +16,9 @@ struct DetalhesView: View {
     @State private var isMessageShown = false
     @State private var isSinalizarShown = false
     @State private var subtarefas = 0
+    @State private var trik = ""
     
-    @State private var name = "Novo lembrete"
-    @State var notas = ""
-    @State var linki = ""
+
     @State private var valueToModify = ""
     @State var selectedOption = 0
     var localiz = "Cidade Universitaria Campinas SP 13083-898 Brasil"
@@ -38,20 +37,16 @@ struct DetalhesView: View {
     
     
     var body: some View {
-        NavigationStack{
+        NavigationView{
             
-            List{
-                Section{
-                    TextField("Label", text: $name)
-                    TextField("Notas", text: $notas)
-                    TextField("URL", text: $linki)
-                }
+            Form{
+                
                 Section{
                     HStack{
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.red).cornerRadius(7)
-                            Image(systemName: "calendar").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "calendar").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
                             Toggle("Data", isOn: $isCalendarShown)
@@ -73,7 +68,7 @@ struct DetalhesView: View {
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                            Image(systemName: "clock.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "clock.fill").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
                             Toggle("Horário", isOn: $isClockShown)
@@ -97,7 +92,7 @@ struct DetalhesView: View {
                     HStack{
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
-                            Image(systemName: "repeat").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "repeat").foregroundColor(.white)
                             
                         }
                         NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
@@ -115,7 +110,7 @@ struct DetalhesView: View {
                     HStack{
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.gray).cornerRadius(7)
-                            Image(systemName: "number").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "number").foregroundColor(.white)
                             
                         }
                         NavigationLink(destination: EtiquetasView()) {
@@ -133,7 +128,7 @@ struct DetalhesView: View {
                             HStack{
                                 ZStack{
                                     Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                                    Image(systemName: "location.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                    Image(systemName: "location.fill").foregroundColor(.white)
                                 }
                                 VStack{
                                     Toggle("Localização", isOn: $isLocationShown)
@@ -199,7 +194,7 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.green).cornerRadius(7)
-                                Image(systemName: "message.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "message.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
@@ -216,7 +211,7 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.orange).cornerRadius(7)
-                                Image(systemName: "flag.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "flag.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Sinalizar", isOn: $isSinalizarShown)
@@ -236,45 +231,27 @@ struct DetalhesView: View {
                                         Text(options[index])
                                     }
                                 }
-                        NavigationLink(destination: ListaView()) {
-                            HStack{
-                                Text("Lista")
-                                Spacer()
-                                HStack{
-                                    Circle().frame(width:10,height:10).foregroundColor(.yellow)
-                                    Text("Lembrete").foregroundColor(.gray)
-                                }
-                                
-                            }
-                        }
+                        
                           
                         
                     
 
                 }
-                Section{
-                    NavigationLink(destination: SubtarefasView()) {
-                        HStack{
-                            
-                            Text("Subtarefas")
-                            Spacer()
-                            Text("\(subtarefas)").foregroundColor(.gray)
-                        }
-                    }
-
-                }
-                Section{
+                                Section{
                     Button("Adicionar Imagem",action: {
-                        notas = "trikas"
+                        
                         
                     })
+                }
+                Section{
+                    TextField("URL", text: $trik)
                 }
                 
                 
                 
                 
             }
-    }
+        }.navigationTitle("Detalhes")
 
     }
 }
@@ -288,9 +265,10 @@ struct DetalhesView: View {
 
 
 
-struct DetalhesView_Previews: PreviewProvider {
+struct MiniDetalhes_Previews: PreviewProvider {
     static var previews: some View {
-        DetalhesView()
+        MiniDetalhesView()
     }
 }
+
 

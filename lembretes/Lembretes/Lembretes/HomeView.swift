@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var searchText = ""
+    @State var x = false
     
     var body: some View {
         NavigationView {
@@ -73,14 +74,20 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button {
+                        x.toggle()
                         
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3.weight(.heavy))
                         Text("Novo Lembrete")
                             .fontWeight(.bold)
+                    }.sheet(isPresented: $x){
+                        NavigationView{
+                            NovoLembreteView()
+                        }
                     }
                     Button {
+                       
                         
                     } label: {
                         Text("Adicionar Lista")

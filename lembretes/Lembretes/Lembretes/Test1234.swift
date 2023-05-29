@@ -39,3 +39,8 @@ struct Info: View{
 
     }
 }
+struct Teste_Previews: PreviewProvider {
+    static var previews: some View {
+        Info()
+    }
+}
