@@ -16,7 +16,7 @@ struct TodosView: View {
     
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             VStack {
                 HStack {
                     Text("Lembretes")

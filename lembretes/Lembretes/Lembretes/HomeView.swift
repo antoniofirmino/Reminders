@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var searchText = ""
     @State private var showingNewReminder = false
     @State private var showingTodosView = false
+    @State private var showingConcludedView = false
     
     var body: some View {
         NavigationStack {
@@ -69,6 +70,12 @@ struct HomeView: View {
                                         secondary: .gray),
                                 numberOfReminders: -1,
                                 categoryName: "Concluídos")
+                            .navigationDestination(isPresented: $showingConcludedView) {
+                                Concluido()
+                            }
+                            .onTapGesture {
+                                showingConcludedView = true
+                            }
                         }
                     }
                         .listSectionSeparator(.hidden)
@@ -94,6 +101,22 @@ struct HomeView: View {
                 DetalhesView()
             }
             .toolbar {
+                ToolbarItem {
+                    Menu {
+                        Button (action: {
+                            
+                        }) {
+                            Label("Editar Listas", systemImage: "pencil")
+                        }
+                        Button(action: {
+                            
+                        }) {
+                            Label("Modelos", systemImage: "square.on.square")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button {
                         showingNewReminder = true
