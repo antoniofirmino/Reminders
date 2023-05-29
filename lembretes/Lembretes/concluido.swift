@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Concluido: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             
             VStack {
                 HStack (spacing: 0){
