@@ -18,9 +18,9 @@
 		1E41CAAF2A1F98AC00E7F6CC /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA72A1F98AC00E7F6CC /* ClockView.swift */; };
 		1E41CAB02A1F98AC00E7F6CC /* ListaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA82A1F98AC00E7F6CC /* ListaView.swift */; };
 		1E41CAB12A1F98AC00E7F6CC /* Repetir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA92A1F98AC00E7F6CC /* Repetir.swift */; };
-		1E41CAB92A1FA98000E7F6CC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAB82A1FA98000E7F6CC /* Persistence.swift */; };
-		1E41CABB2A20CCC200E7F6CC /* todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CABA2A20CCC100E7F6CC /* todos.swift */; };
-		1E8FDF9B2A24D02D0084AD4B /* Reminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FDF982A24D02D0084AD4B /* Reminders.xcdatamodeld */; };
+		745F88F62A1F9DFF00E02831 /* NovoLembretevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F52A1F9DFF00E02831 /* NovoLembretevView.swift */; };
+		745F88F82A1F9F9900E02831 /* MiniDetalhes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F72A1F9F9900E02831 /* MiniDetalhes.swift */; };
+		745F88FC2A24DF2000E02831 /* todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88FB2A24DF1F00E02831 /* todos.swift */; };
 		C51663912A1F8BEF004249FB /* concluido.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51663902A1F8BEF004249FB /* concluido.swift */; };
 		C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA62A1BA9980054563C /* LembretesApp.swift */; };
 		C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA82A1BA9980054563C /* ContentView.swift */; };
@@ -40,12 +40,11 @@
 		1E41CAA72A1F98AC00E7F6CC /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClockView.swift; path = Lembretes/ClockView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA82A1F98AC00E7F6CC /* ListaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListaView.swift; path = Lembretes/ListaView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA92A1F98AC00E7F6CC /* Repetir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repetir.swift; path = Lembretes/Repetir.swift; sourceTree = SOURCE_ROOT; };
-		1E41CAB82A1FA98000E7F6CC /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		1E41CABA2A20CCC100E7F6CC /* todos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todos.swift; sourceTree = "<group>"; };
-		1E8FDF972A24C3410084AD4B /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E8FDF992A24D02D0084AD4B /* Reminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reminders.xcdatamodel; sourceTree = "<group>"; };
-		1E8FDF9A2A24D02D0084AD4B /* Lembretes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lembretes.xcdatamodel; sourceTree = "<group>"; };
+		745F88F52A1F9DFF00E02831 /* NovoLembretevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovoLembretevView.swift; sourceTree = "<group>"; };
+		745F88F72A1F9F9900E02831 /* MiniDetalhes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetalhes.swift; sourceTree = "<group>"; };
+		745F88FB2A24DF1F00E02831 /* todos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todos.swift; sourceTree = "<group>"; };
 		C51663902A1F8BEF004249FB /* concluido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = concluido.swift; path = ../concluido.swift; sourceTree = "<group>"; };
+		C54A7EA32A1BA9980054563C /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54A7EA62A1BA9980054563C /* LembretesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LembretesApp.swift; sourceTree = "<group>"; };
 		C54A7EA82A1BA9980054563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C54A7EAA2A1BA9990054563C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,13 +66,23 @@
 			isa = PBXGroup;
 			children = (
 				C54A7EA52A1BA9980054563C /* Lembretes */,
-				1E8FDF972A24C3410084AD4B /* Lembretes.app */,
+				C54A7EA42A1BA9980054563C /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		C54A7EA42A1BA9980054563C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C54A7EA32A1BA9980054563C /* Lembretes.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C54A7EA52A1BA9980054563C /* Lembretes */ = {
 			isa = PBXGroup;
 			children = (
+				745F88F72A1F9F9900E02831 /* MiniDetalhes.swift */,
+				745F88F52A1F9DFF00E02831 /* NovoLembretevView.swift */,
 				1E41CAA42A1F98AC00E7F6CC /* CalendarView.swift */,
 				1E41CAA72A1F98AC00E7F6CC /* ClockView.swift */,
 				1E41CAA62A1F98AC00E7F6CC /* DetalhesView.swift */,
@@ -88,10 +97,8 @@
 				1E0324F92A1CDC700086D994 /* HomeView.swift */,
 				1E014B9E2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift */,
 				1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */,
-				1E41CABA2A20CCC100E7F6CC /* todos.swift */,
+				745F88FB2A24DF1F00E02831 /* todos.swift */,
 				C54A7EAA2A1BA9990054563C /* Assets.xcassets */,
-				1E41CAB82A1FA98000E7F6CC /* Persistence.swift */,
-				1E8FDF982A24D02D0084AD4B /* Reminders.xcdatamodeld */,
 				C54A7EAC2A1BA9990054563C /* Preview Content */,
 			);
 			path = Lembretes;
@@ -122,7 +129,7 @@
 			);
 			name = Lembretes;
 			productName = Lembretes;
-			productReference = 1E8FDF972A24C3410084AD4B /* Lembretes.app */;
+			productReference = C54A7EA32A1BA9980054563C /* Lembretes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -149,7 +156,7 @@
 				Base,
 			);
 			mainGroup = C54A7E9A2A1BA9980054563C;
-			productRefGroup = C54A7E9A2A1BA9980054563C;
+			productRefGroup = C54A7EA42A1BA9980054563C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -176,20 +183,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E41CAAD2A1F98AC00E7F6CC /* EtiquetasView.swift in Sources */,
-				1E41CAB92A1FA98000E7F6CC /* Persistence.swift in Sources */,
 				1E41CAAF2A1F98AC00E7F6CC /* ClockView.swift in Sources */,
 				1E41CAB02A1F98AC00E7F6CC /* ListaView.swift in Sources */,
-				1E41CABB2A20CCC200E7F6CC /* todos.swift in Sources */,
 				1E41CAB12A1F98AC00E7F6CC /* Repetir.swift in Sources */,
+				745F88F82A1F9F9900E02831 /* MiniDetalhes.swift in Sources */,
 				1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */,
 				1E41CAAA2A1F98AC00E7F6CC /* SubtarefasView.swift in Sources */,
-				1E8FDF9B2A24D02D0084AD4B /* Reminders.xcdatamodeld in Sources */,
 				C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */,
 				1E41CAAB2A1F98AC00E7F6CC /* Test1234.swift in Sources */,
 				C51663912A1F8BEF004249FB /* concluido.swift in Sources */,
 				1E41CAAC2A1F98AC00E7F6CC /* CalendarView.swift in Sources */,
+				745F88F62A1F9DFF00E02831 /* NovoLembretevView.swift in Sources */,
 				1E014B9F2A1CEBFB00BFEA0A /* ReminderCategoryCardView.swift in Sources */,
 				C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */,
+				745F88FC2A24DF2000E02831 /* todos.swift in Sources */,
 				1E41CAAE2A1F98AC00E7F6CC /* DetalhesView.swift in Sources */,
 				1E3A6AC62A1D042100DEE9D6 /* ReminderListItemView.swift in Sources */,
 			);
@@ -392,20 +399,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1E8FDF982A24D02D0084AD4B /* Reminders.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1E8FDF992A24D02D0084AD4B /* Reminders.xcdatamodel */,
-				1E8FDF9A2A24D02D0084AD4B /* Lembretes.xcdatamodel */,
-			);
-			currentVersion = 1E8FDF992A24D02D0084AD4B /* Reminders.xcdatamodel */;
-			path = Reminders.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C54A7E9B2A1BA9980054563C /* Project object */;
 }
