@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NovoLembreteView: View {
+    @Environment(\.dismiss) var dismiss
     
     @State private var title = ""
     @State var notas = ""
@@ -18,7 +19,7 @@ struct NovoLembreteView: View {
     
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             
             Form{
                 Section{
@@ -75,14 +76,24 @@ struct NovoLembreteView: View {
                 
                 
             }
-        }.navigationTitle("Title")
+        }.navigationTitle("Novo Lembrete")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Text("Trikas")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                        
+                    }, label: {
+                        Text("Cancelar")
+                    })
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Text("trikas")
+                    Button(action: {
+                        
+                        
+                    }, label: {
+                        Text("Adicionar")
+                    }).disabled(true)
                 }
             }
     }

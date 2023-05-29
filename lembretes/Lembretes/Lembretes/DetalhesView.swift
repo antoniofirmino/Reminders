@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetalhesView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var selectedDate = Date()
     @State private var selectedTime = Date()
     @State private var isCalendarShown = false
@@ -264,17 +265,51 @@ struct DetalhesView: View {
 
                 }
                 Section{
-                    Button("Adicionar Imagem",action: {
-                        notas = "trikas"
-                        
-                    })
+                    Menu {
+                        Button (action: {
+                            
+                        }) {
+                            Label("Tirar Foto", systemImage: "camera")
+                        }
+                        Button(action: {
+                        }){
+                            Label("Escanear Documento",systemImage: "doc.viewfinder")
+                        }
+                        Button(action: {
+                            
+                        }) {
+                            Label("Fototeca", systemImage: "photo.on.rectangle")
+                        }
+                    } label: {
+                        Text("Adicionar Imagem")
+                    }
                 }
                 
                 
                 
                 
             }
-    }
+    }.navigationTitle("Detalhes")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                        
+                    }, label: {
+                        Text("Cancelar")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        dismiss()
+                        
+                        
+                    }, label: {
+                        Text("OK")
+                    })
+                }
+            }
 
     }
 }

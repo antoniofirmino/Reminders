@@ -12,7 +12,7 @@ struct HomeView: View {
     @State var x = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if searchText.isEmpty {
                     Grid(horizontalSpacing: 16, verticalSpacing: 16) {

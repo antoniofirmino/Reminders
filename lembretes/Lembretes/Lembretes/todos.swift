@@ -53,10 +53,8 @@ struct TodosView: View {
                             .font(.title)
                     }
                     .padding(.trailing)
-                    .popover(isPresented: $showinfo) {
-                        Text("Alguma informação útil sobre o campo de texto.")
-                            .font(.body)
-                            .padding()
+                    .sheet(isPresented: $showinfo) {
+                        DetalhesView()
                     }
                     
                     
