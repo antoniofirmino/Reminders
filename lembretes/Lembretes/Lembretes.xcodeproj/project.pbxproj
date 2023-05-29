@@ -21,6 +21,8 @@
 		745F88F62A1F9DFF00E02831 /* NovoLembretevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F52A1F9DFF00E02831 /* NovoLembretevView.swift */; };
 		745F88F82A1F9F9900E02831 /* MiniDetalhes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88F72A1F9F9900E02831 /* MiniDetalhes.swift */; };
 		745F88FC2A24DF2000E02831 /* todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88FB2A24DF1F00E02831 /* todos.swift */; };
+		745F89002A24EE9100E02831 /* Reminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 745F88FD2A24EE9100E02831 /* Reminders.xcdatamodeld */; };
+		745F89012A24EE9100E02831 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F88FF2A24EE9100E02831 /* Persistence.swift */; };
 		C51663912A1F8BEF004249FB /* concluido.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51663902A1F8BEF004249FB /* concluido.swift */; };
 		C54A7EA72A1BA9980054563C /* LembretesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA62A1BA9980054563C /* LembretesApp.swift */; };
 		C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A7EA82A1BA9980054563C /* ContentView.swift */; };
@@ -43,6 +45,8 @@
 		745F88F52A1F9DFF00E02831 /* NovoLembretevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovoLembretevView.swift; sourceTree = "<group>"; };
 		745F88F72A1F9F9900E02831 /* MiniDetalhes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniDetalhes.swift; sourceTree = "<group>"; };
 		745F88FB2A24DF1F00E02831 /* todos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = todos.swift; sourceTree = "<group>"; };
+		745F88FE2A24EE9100E02831 /* Reminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reminders.xcdatamodel; sourceTree = "<group>"; };
+		745F88FF2A24EE9100E02831 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C51663902A1F8BEF004249FB /* concluido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = concluido.swift; path = ../concluido.swift; sourceTree = "<group>"; };
 		C54A7EA32A1BA9980054563C /* Lembretes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lembretes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54A7EA62A1BA9980054563C /* LembretesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LembretesApp.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 				1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */,
 				745F88FB2A24DF1F00E02831 /* todos.swift */,
 				C54A7EAA2A1BA9990054563C /* Assets.xcassets */,
+				745F88FF2A24EE9100E02831 /* Persistence.swift */,
+				745F88FD2A24EE9100E02831 /* Reminders.xcdatamodeld */,
 				C54A7EAC2A1BA9990054563C /* Preview Content */,
 			);
 			path = Lembretes;
@@ -189,6 +195,8 @@
 				745F88F82A1F9F9900E02831 /* MiniDetalhes.swift in Sources */,
 				1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */,
 				1E41CAAA2A1F98AC00E7F6CC /* SubtarefasView.swift in Sources */,
+				745F89002A24EE9100E02831 /* Reminders.xcdatamodeld in Sources */,
+				745F89012A24EE9100E02831 /* Persistence.swift in Sources */,
 				C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */,
 				1E41CAAB2A1F98AC00E7F6CC /* Test1234.swift in Sources */,
 				C51663912A1F8BEF004249FB /* concluido.swift in Sources */,
@@ -399,6 +407,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		745F88FD2A24EE9100E02831 /* Reminders.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				745F88FE2A24EE9100E02831 /* Reminders.xcdatamodel */,
+			);
+			currentVersion = 745F88FE2A24EE9100E02831 /* Reminders.xcdatamodel */;
+			path = Reminders.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C54A7E9B2A1BA9980054563C /* Project object */;
 }

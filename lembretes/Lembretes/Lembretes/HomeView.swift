@@ -98,7 +98,10 @@ struct HomeView: View {
             }
             .listStyle(.plain)
             .sheet(isPresented: $showingNewReminder) {
-                DetalhesView()
+                NavigationView{
+                    NovoLembreteView()
+                    
+                }
             }
             .toolbar {
                 ToolbarItem {

@@ -54,7 +54,10 @@ struct TodosView: View {
                     }
                     .padding(.trailing)
                     .sheet(isPresented: $showinfo) {
-                        DetalhesView()
+                        NavigationView{
+                            DetalhesView()
+                            
+                        }
                     }
                     
                     
