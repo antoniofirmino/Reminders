@@ -43,7 +43,11 @@ struct Concluido: View {
                         Label("Selecionar Lembretes", systemImage: "checkmark.circle")
                         
                         }
+                    Button (action: {
+                        
+                    }) {
                         Label("Imprimir", systemImage: "printer")
+                    }
                     } label: {
                                 Image(systemName: "ellipsis.circle")
                               }
