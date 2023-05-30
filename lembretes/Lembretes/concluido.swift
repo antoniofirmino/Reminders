@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct Concluido: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.text, ascending: true)],
+        predicate: NSPredicate(format: "concluded == true"),
+        animation: .default)
+    private var reminders: FetchedResults<Reminder>
+
+    
+
+    @State private var isSelected = false
+    @State private var lembrete = ""
+    @State private var showinfo = true
     var body: some View {
         NavigationStack {
             
             VStack {
                 HStack (spacing: 0){
-                    Text("1 Concluído • ")
+                    Text("\(reminders.count) Concluído • ")
                         .font(.headline)
                     
                     Text("Limpar")
@@ -29,10 +42,30 @@ struct Concluido: View {
                 .padding(.leading)
                 Divider()
 
-                Spacer()
-                Text("Nenhum lembrete")
-                Spacer()
+                
+
                     }
+            
+//            VStack {
+//                ForEach(reminders) { reminder in
+//                    Button(action: {
+//                        isSelected.toggle()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: reminder.concluded ? "circle.fill" : "circle")
+//                                .foregroundColor(.blue)
+//                                .font(.title)
+//
+//                            Spacer()
+//                        }
+//
+//                    }
+//                }
+//            }
+
+
+                Spacer()
+            
             .navigationTitle("Concluídos")
             .toolbar{
                 ToolbarItem{
@@ -53,13 +86,37 @@ struct Concluido: View {
                               }
                             }
                     }
+            
+            VStack {
+                ForEach(reminders) { reminder in
+                    Button(action: {
+                        isSelected.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: reminder.concluded ? "circle.fill" : "circle")
+                                .foregroundColor(.blue)
+                                .font(.title)
+                            
+                            Spacer()
+                        }
+                        
+                    }
                 }
             }
+            
+            
+            
+                }
+        
+            }
+    
         }
     
     
     struct Concluido_Previews: PreviewProvider {
         static var previews: some View {
+            
             Concluido()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }
