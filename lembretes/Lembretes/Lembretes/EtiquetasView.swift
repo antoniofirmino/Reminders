@@ -16,7 +16,7 @@ struct EtiquetasView: View{
     var body: some View{
         var trikas = ""
         
-        NavigationView{
+        NavigationStack{
             Form{
                 if Lista.count != 0{
                     Section{

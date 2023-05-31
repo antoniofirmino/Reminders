@@ -13,10 +13,8 @@ struct NovoLembreteView: View {
     @State private var title = ""
     @State var notas = ""
     @State var linki = ""
-  
-    
-    
-    
+    @State private var hasChanges = false
+    @State private var showingCancelConfirmation = false
     
     var body: some View {
         NavigationStack{
@@ -24,9 +22,14 @@ struct NovoLembreteView: View {
             Form{
                 Section{
                     TextField("Título", text: $title)
+                        .onChange(of: title) { _ in
+                            hasChanges = true
+                        }
                     VStack{
                         TextField("Notas", text: $notas)
-
+                            .onChange(of: notas) { _ in
+                                hasChanges = true
+                            }
                         Spacer(minLength: 48)
                     }
                     
@@ -81,11 +84,18 @@ struct NovoLembreteView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        dismiss()
+                        if hasChanges {
+                            showingCancelConfirmation = true
+                        } else {
+                            dismiss()
+                        }
                         
                     }, label: {
                         Text("Cancelar")
                     })
+                    .confirmationDialog("", isPresented: $showingCancelConfirmation) {
+                        Button("Descartar Alterações", role: .destructive, action: dismiss.callAsFunction)
+                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -93,7 +103,7 @@ struct NovoLembreteView: View {
                         
                     }, label: {
                         Text("Adicionar")
-                    }).disabled(true)
+                    }).disabled(!hasChanges)
                 }
             }
     }

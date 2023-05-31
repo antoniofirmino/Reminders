@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SubtarefasView: View{
     var body: some View{
-        NavigationView{
+        NavigationStack{
             Text("Trikas")
             
             

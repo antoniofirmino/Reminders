@@ -8,7 +8,7 @@
 import SwiftUI
 struct ListaView: View{
     var body: some View{
-        NavigationView{
+        NavigationStack{
             Text("Trikas")
             
             
