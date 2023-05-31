@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetalhesView: View {
     @Environment(\.dismiss) var dismiss
+    @State private var hasChanges = false
+    @State private var showingCancelConfirmation = false
     @State private var selectedDate = Date()
     @State private var selectedTime = Date()
     @State private var isCalendarShown = false
@@ -44,8 +46,17 @@ struct DetalhesView: View {
             List{
                 Section{
                     TextField("Label", text: $name)
+                        .onChange(of: name) { _ in
+                            hasChanges = true
+                        }
                     TextField("Notas", text: $notas)
+                        .onChange(of: notas) { _ in
+                            hasChanges = true
+                        }
                     TextField("URL", text: $linki)
+                        .onChange(of: linki) { _ in
+                            hasChanges = true
+                        }
                 }
                 Section{
                     HStack{
@@ -56,6 +67,9 @@ struct DetalhesView: View {
                         }
                         VStack(spacing:0.01){
                             Toggle("Data", isOn: $isCalendarShown)
+                                .onChange(of: isCalendarShown) { _ in
+                                    hasChanges = true
+                                }
                             HStack{
                                 Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.subheadline)
                                 Spacer()
@@ -78,6 +92,9 @@ struct DetalhesView: View {
                         }
                         VStack(spacing:0.01){
                             Toggle("Horário", isOn: $isClockShown)
+                                .onChange(of: isClockShown) { _ in
+                                    hasChanges = true
+                                }
                             HStack{
                                 Text("\(selectedTime, formatter: timeFormatter)").font(.subheadline).foregroundColor(.blue)
                                 Spacer()
@@ -138,7 +155,9 @@ struct DetalhesView: View {
                                 }
                                 VStack{
                                     Toggle("Localização", isOn: $isLocationShown)
-                                    
+                                        .onChange(of: isLocationShown) { _ in
+                                            hasChanges = true
+                                        }
                                     
                                 }
                             }
@@ -204,7 +223,9 @@ struct DetalhesView: View {
                             }
                             VStack{
                                 Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
-                                
+                                    .onChange(of: isMessageShown) { _ in
+                                        hasChanges = true
+                                    }
                             }
                         }
                             if isMessageShown{
@@ -221,6 +242,9 @@ struct DetalhesView: View {
                             }
                             VStack{
                                 Toggle("Sinalizar", isOn: $isSinalizarShown)
+                                    .onChange(of: isSinalizarShown) { _ in
+                                        hasChanges = true
+                                    }
                                 
                             }
                         }
@@ -237,6 +261,9 @@ struct DetalhesView: View {
                                         Text(options[index])
                                     }
                                 }
+                        .onChange(of: selectedOption) { _ in
+                            hasChanges = true
+                        }
                         NavigationLink(destination: ListaView()) {
                             HStack{
                                 Text("Lista")
@@ -294,11 +321,18 @@ struct DetalhesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        dismiss()
+                        if hasChanges {
+                            showingCancelConfirmation = true
+                        } else {
+                            dismiss()
+                        }
                         
                     }, label: {
                         Text("Cancelar")
                     })
+                    .confirmationDialog("", isPresented: $showingCancelConfirmation) {
+                        Button("Descartar Alterações", role: .destructive, action: dismiss.callAsFunction)
+                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

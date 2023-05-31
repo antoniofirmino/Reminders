@@ -98,7 +98,7 @@ struct HomeView: View {
             }
             .listStyle(.plain)
             .sheet(isPresented: $showingNewReminder) {
-                NavigationView{
+                NavigationStack{
                     NovoLembreteView()
                     
                 }
