@@ -9,15 +9,21 @@ import SwiftUI
    
 
 struct TodosView: View {
-    @State private var isSelected = false
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.text, ascending: true)],
+        animation: .default)
+    private var reminders: FetchedResults<Reminder>
+    
+    @FocusState private var isNewReminderTextFieldFocused: Bool
     @State private var lembrete = ""
+    @State private var note = ""
     @State private var showinfo = false
-    
-    
     
     var body: some View {
         NavigationStack{
-            VStack {
+            List {
                 HStack {
                     Text("Lembretes")
                         .font(.title)
@@ -27,69 +33,80 @@ struct TodosView: View {
                     
                     Spacer()
                 }
+                    .listRowSeparator(.hidden)
                 
-                HStack {
-                    Button(action: {
-                        isSelected.toggle()
-                    }) {
-                        Image(systemName: isSelected ? "circle.fill" : "circle")
-                            .foregroundColor(.blue)
-                            .font(.title)
-                            .padding(.leading)
-                        
-                    }
-                    
-                    TextField("Digite o Lembrete", text: $lembrete)
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.leading)
+                HStack(alignment: .top) {
+                    Image(systemName: "circle.dotted")
+                        .foregroundColor(.blue)
+                        .font(.title)
                         .padding(.leading)
+                        .onTapGesture {
+                            isNewReminderTextFieldFocused = true
+                        }
                     
-                    Button(action: {
-                        showinfo.toggle() 
-                    }) {
-                        Image(systemName: "info.circle")
-                            .foregroundColor(.blue)
-                            .font(.title)
+                    VStack {
+                        TextField("", text: $lembrete)
+                            .font(.body)
+                            .multilineTextAlignment(.leading)
+                            .focused($isNewReminderTextFieldFocused)
+                        
+                        if isNewReminderTextFieldFocused {
+                            TextField("Adicionar Nota", text: $note)
+                        }
                     }
+                    
+                    Image(systemName: "info.circle")
+                        .foregroundColor(.blue)
+                        .font(.title)
+                        .onTapGesture {
+                            showinfo.toggle()
+                        }
+                        .opacity(isNewReminderTextFieldFocused ? 1 : 0)
+                }
                     .padding(.trailing)
-                    .sheet(isPresented: $showinfo) {
-                        NavigationStack{
-                            DetalhesView()
-                            
-                        }
-                    }
-                    
-                    
-                    
-                }
-                .navigationTitle("Todos")
-                .toolbar{
-                    ToolbarItem
-                    {
-                        Menu {
-                            Button (action: {
-                                
-                            }) {
-                                Label("Selecionar", systemImage: "checkmark.circle")
-                            }
-                            Button(action: {
-                            }){
-                                Label("Mostrar Concluidos",systemImage: "eye")
-                            }
-                            Button(action: {
-                                
-                            }) {
-                                Label("Imprimir", systemImage: "printer")
-                            }
-                        } label: {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
-                }
+                    .listRowSeparator(.visible)
                 
                 Spacer()
+                    .listRowSeparator(.hidden)
                 
+            }
+            .listStyle(.plain)
+            .navigationTitle("Todos")
+            .sheet(isPresented: $showinfo) {
+                NavigationStack{
+                    DetalhesView()
+                    
+                }
+            }
+            .toolbar{
+                ToolbarItem
+                {
+                    Menu {
+                        Button (action: {
+                            
+                        }) {
+                            Label("Selecionar", systemImage: "checkmark.circle")
+                        }
+                        Button(action: {
+                        }){
+                            Label("Mostrar Concluidos",systemImage: "eye")
+                        }
+                        Button(action: {
+                            
+                        }) {
+                            Label("Imprimir", systemImage: "printer")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
+                if isNewReminderTextFieldFocused {
+                    ToolbarItem {
+                        Button("OK") {
+                            isNewReminderTextFieldFocused = false
+                        }
+                    }
+                }
             }
         }
         
