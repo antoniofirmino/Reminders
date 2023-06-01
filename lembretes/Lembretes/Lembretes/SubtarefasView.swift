@@ -11,33 +11,22 @@ struct SubtarefasView: View {
     @State private var subtasks: [String] = []
     @State var subtaskTextField = ""
     var body: some View {
-        VStack {
-            HStack {
-                
-                
-                Button(action: {
-                   
-                    if !subtaskTextField.isEmpty {
-                                            subtasks.append(subtaskTextField)
-                                            subtaskTextField = ""
-                                        }
-                    
-                    
-                    subtaskTextField = ""
-                }) {
-                    Text("Adicionar")
-                        .padding(.horizontal)
-                }
-            }
+        
+        NavigationStack{
             
-            List {
-                ForEach(subtasks, id: \.self) { subtask in
-                    Text(subtask)
-                }
-                .onDelete(perform: deleteSubtask)
+            List{
+                
+                HStack{
+                    
+                    Button(action: {
+                    
+                }, label: {
+                    Text("Adicionar Lembrete").foregroundColor(.blue)
+                }).offset(x:40)
             }
-            .listStyle(InsetGroupedListStyle())
-        }
+            }.listStyle(.inset)
+            
+        }.navigationBarTitle("Subtarefas")
     }
     
     private func deleteSubtask(at offsets: IndexSet) {

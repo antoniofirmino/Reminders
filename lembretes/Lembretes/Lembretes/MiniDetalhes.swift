@@ -27,6 +27,7 @@ struct MiniDetalhesView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, d 'de' MMMM 'de' yyyy"
         formatter.locale = Locale(identifier: "pt_BR")
+        formatter.dateStyle = .long
         return formatter
     }
     var timeFormatter: DateFormatter {

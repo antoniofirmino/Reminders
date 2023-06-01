@@ -54,42 +54,41 @@ struct TodosView: View {
                     }
                     .padding(.trailing)
                     .sheet(isPresented: $showinfo) {
-                        NavigationView{
+                        NavigationStack{
                             DetalhesView()
-                            
                         }
                     }
                     
                     
                     
-                }
-                .navigationTitle("Todos")
-                .toolbar{
-                    ToolbarItem
-                    {
-                        Menu {
-                            Button (action: {
-                                
-                            }) {
-                                Label("Selecionar", systemImage: "checkmark.circle")
-                            }
-                            Button(action: {
-                            }){
-                                Label("Mostrar Concluidos",systemImage: "eye")
-                            }
-                            Button(action: {
-                                
-                            }) {
-                                Label("Imprimir", systemImage: "printer")
-                            }
-                        } label: {
-                            Image(systemName: "ellipsis.circle")
-                        }
-                    }
                 }
                 
                 Spacer()
                 
+            }
+        }
+        .navigationTitle("Todos")
+        .toolbar{
+            ToolbarItem
+            {
+                Menu {
+                    Button (action: {
+                        
+                    }) {
+                        Label("Selecionar", systemImage: "checkmark.circle")
+                    }
+                    Button(action: {
+                    }){
+                        Label("Mostrar Concluidos",systemImage: "eye")
+                    }
+                    Button(action: {
+                        
+                    }) {
+                        Label("Imprimir", systemImage: "printer")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
             }
         }
         

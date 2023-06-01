@@ -58,7 +58,7 @@ struct DetalhesView: View {
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.red).cornerRadius(7)
-                            Image(systemName: "calendar").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "calendar").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
                             Toggle(isOn: $isCalendarShown){
@@ -87,7 +87,7 @@ struct DetalhesView: View {
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                            Image(systemName: "clock.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "clock.fill").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
                             Toggle(isOn: $isClockShown){
@@ -120,7 +120,7 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
-                                Image(systemName: "repeat").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "repeat").foregroundColor(.white)
                                 
                             }
                             NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
@@ -148,7 +148,7 @@ struct DetalhesView: View {
                     HStack{
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.gray).cornerRadius(7)
-                            Image(systemName: "number").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "number").foregroundColor(.white)
                             
                         }
                         NavigationLink(destination: EtiquetasView()) {
@@ -240,7 +240,7 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.green).cornerRadius(7)
-                                Image(systemName: "message.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "message.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
@@ -257,7 +257,7 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.orange).cornerRadius(7)
-                                Image(systemName: "flag.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "flag.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Sinalizar", isOn: $isSinalizarShown)
@@ -335,7 +335,7 @@ struct DetalhesView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         dismiss()
-                        
+
                     }, label: {
                         Text("Cancelar")
                     })
@@ -343,8 +343,8 @@ struct DetalhesView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         dismiss()
-                        
-                        
+
+
                     }, label: {
                         Text("OK")
                     })

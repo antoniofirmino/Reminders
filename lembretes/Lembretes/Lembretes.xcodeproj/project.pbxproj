@@ -11,7 +11,6 @@
 		1E0324FA2A1CDC700086D994 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0324F92A1CDC700086D994 /* HomeView.swift */; };
 		1E3A6AC62A1D042100DEE9D6 /* ReminderListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */; };
 		1E41CAAA2A1F98AC00E7F6CC /* SubtarefasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA22A1F98AC00E7F6CC /* SubtarefasView.swift */; };
-		1E41CAAB2A1F98AC00E7F6CC /* Test1234.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA32A1F98AC00E7F6CC /* Test1234.swift */; };
 		1E41CAAC2A1F98AC00E7F6CC /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA42A1F98AC00E7F6CC /* CalendarView.swift */; };
 		1E41CAAD2A1F98AC00E7F6CC /* EtiquetasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA52A1F98AC00E7F6CC /* EtiquetasView.swift */; };
 		1E41CAAE2A1F98AC00E7F6CC /* DetalhesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E41CAA62A1F98AC00E7F6CC /* DetalhesView.swift */; };
@@ -35,7 +34,6 @@
 		1E0324F92A1CDC700086D994 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1E3A6AC52A1D042100DEE9D6 /* ReminderListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderListItemView.swift; sourceTree = "<group>"; };
 		1E41CAA22A1F98AC00E7F6CC /* SubtarefasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubtarefasView.swift; path = Lembretes/SubtarefasView.swift; sourceTree = SOURCE_ROOT; };
-		1E41CAA32A1F98AC00E7F6CC /* Test1234.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Test1234.swift; path = Lembretes/Test1234.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA42A1F98AC00E7F6CC /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = Lembretes/CalendarView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA52A1F98AC00E7F6CC /* EtiquetasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EtiquetasView.swift; path = Lembretes/EtiquetasView.swift; sourceTree = SOURCE_ROOT; };
 		1E41CAA62A1F98AC00E7F6CC /* DetalhesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetalhesView.swift; path = Lembretes/DetalhesView.swift; sourceTree = SOURCE_ROOT; };
@@ -94,7 +92,6 @@
 				1E41CAA82A1F98AC00E7F6CC /* ListaView.swift */,
 				1E41CAA92A1F98AC00E7F6CC /* Repetir.swift */,
 				1E41CAA22A1F98AC00E7F6CC /* SubtarefasView.swift */,
-				1E41CAA32A1F98AC00E7F6CC /* Test1234.swift */,
 				C51663902A1F8BEF004249FB /* concluido.swift */,
 				C54A7EA62A1BA9980054563C /* LembretesApp.swift */,
 				745F88FB2A24DF1F00E02831 /* todos.swift */,
@@ -198,7 +195,6 @@
 				745F89002A24EE9100E02831 /* Reminders.xcdatamodeld in Sources */,
 				745F89012A24EE9100E02831 /* Persistence.swift in Sources */,
 				C54A7EA92A1BA9980054563C /* ContentView.swift in Sources */,
-				1E41CAAB2A1F98AC00E7F6CC /* Test1234.swift in Sources */,
 				C51663912A1F8BEF004249FB /* concluido.swift in Sources */,
 				1E41CAAC2A1F98AC00E7F6CC /* CalendarView.swift in Sources */,
 				745F88F62A1F9DFF00E02831 /* NovoLembretevView.swift in Sources */,
