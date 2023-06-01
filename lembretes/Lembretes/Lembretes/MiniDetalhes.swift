@@ -16,7 +16,7 @@ struct MiniDetalhesView: View {
     @State private var isMessageShown = false
     @State private var isSinalizarShown = false
     @State private var subtarefas = 0
-    @State private var trik = ""
+    @State var trik = ""
     
 
     @State private var valueToModify = ""
@@ -36,8 +36,9 @@ struct MiniDetalhesView: View {
     }
     
     
+    
     var body: some View {
-        NavigationView{
+        NavigationStack{
             
             Form{
                 
@@ -48,18 +49,25 @@ struct MiniDetalhesView: View {
                             Rectangle().frame(width:27,height: 27).foregroundColor(.red).cornerRadius(7)
                             Image(systemName: "calendar").foregroundColor(.white)
                         }
-                        VStack(spacing:0.01){
-                            Toggle("Data", isOn: $isCalendarShown)
-                            HStack{
-                                Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.subheadline)
-                                Spacer()
+                        VStack(alignment: .leading){
+                            Toggle(isOn: $isCalendarShown){
+                                VStack{
+                                    HStack{
+                                        Text("Data")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.system(size:12))
+                                        Spacer()
+                                    }
+                                }
                             }
-                        }
-                    }
+                        }                    }
                     
                     
                     if isCalendarShown {
                         CalendarView(selectedDate: $selectedDate)
+                        
                     }
                     
                 
@@ -70,13 +78,23 @@ struct MiniDetalhesView: View {
                             Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
                             Image(systemName: "clock.fill").foregroundColor(.white)
                         }
-                        VStack(spacing:0.01){
-                            Toggle("Horário", isOn: $isClockShown)
-                            HStack{
-                                Text("\(selectedTime, formatter: timeFormatter)").font(.subheadline).foregroundColor(.blue)
-                                Spacer()
+                        VStack(alignment: .leading){
+                            Toggle(isOn: $isClockShown ){
+                                VStack{
+                                    HStack{
+                                        Text("Horário")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text("\(selectedTime, formatter: timeFormatter)").font(.system(size:12)).foregroundColor(.blue)
+                                        Spacer()
+                                    }
+                                    
+                                }
                             }
+                            
                         }
+
                     }
                     if isClockShown{
                         withAnimation(.easeInOut(duration: 2)) {
@@ -88,23 +106,23 @@ struct MiniDetalhesView: View {
                     
                 }
                 if isCalendarShown || isClockShown{
-                    Section{
-                    HStack{
-                        ZStack{
-                            Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
-                            Image(systemName: "repeat").foregroundColor(.white)
-                            
-                        }
-                        NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
-                            HStack{
-                                Text("Repetir")
-                                Spacer()
-                                Text("\(valueToModify)").foregroundColor(.gray)
-                            }
-                        }
+                Section{
+                HStack{
+                    ZStack{
+                        Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
+                        Image(systemName: "repeat").foregroundColor(.white)
                         
                     }
+                    NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
+                        HStack{
+                            Text("Repetir")
+                            Spacer()
+                            Text("\(valueToModify)").foregroundColor(.gray)
+                        }
+                    }
+                    
                 }
+            }
                 }
                 Section{
                     HStack{
@@ -124,7 +142,7 @@ struct MiniDetalhesView: View {
                 }
                 Group{
                     Section{
-                        VStack{
+                        VStack(spacing:10){
                             HStack{
                                 ZStack{
                                     Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
@@ -137,46 +155,54 @@ struct MiniDetalhesView: View {
                                 }
                             }
                             if isLocationShown{
-                                HStack(spacing:24){
-                                    VStack{
+                                VStack{
+                                    HStack(spacing:20){
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "location.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Atual").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Entrar").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Sair").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "ellipsis").foregroundColor(.white)
                                             
                                         }
-                                        Text("Personalizada").font(.subheadline).frame(maxWidth: .infinity,maxHeight: .infinity)
+                                        
                                     }
-                                }.frame(maxWidth: .infinity,maxHeight: .infinity)
+                                    HStack(spacing:24){
+                                        ZStack{
+                                            Rectangle().foregroundColor(.blue).frame(width:40,height:20).cornerRadius(7)
+                                            Text("Atual").font(.system(size:12)).foregroundColor(.white).bold()
+                                            
+                                        }
+                                        Text("Ao Entrar").font(.system(size:12)).offset(x:13)
+                                        Text("Ao Sair").font(.system(size:12)).offset(x:22)
+                                        Text("Personalizada").font(.system(size:12)).offset(x:15)
+                                    }
+                                }
                                 
                             }
                         }
                         if isLocationShown{
                             HStack{
-                                Text("Ao chegar em: \(localiz)")
+                                Text("Ao chegar em: \(localiz)").foregroundColor(.gray)
                                 Image(systemName: "info.circle").foregroundColor(.blue)
                             }
                         }
@@ -188,38 +214,38 @@ struct MiniDetalhesView: View {
                         
                         
                     }
-                    Group{
-                        
-                        Section(footer: Text("Se esta opção for selecionada, a notificação do lembrete será mostrada ao conversar com uma pessoa no app Mensagens.")){
-                        HStack{
-                            ZStack{
-                                Rectangle().frame(width:27,height: 27).foregroundColor(.green).cornerRadius(7)
-                                Image(systemName: "message.fill").foregroundColor(.white)
-                            }
-                            VStack{
-                                Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
-                                
-                            }
+                Group{
+                    
+                    Section(footer: Text("Se esta opção for selecionada, a notificação do lembrete será mostrada ao conversar com uma pessoa no app Mensagens.")){
+                    HStack{
+                        ZStack{
+                            Rectangle().frame(width:27,height: 27).foregroundColor(.green).cornerRadius(7)
+                            Image(systemName: "message.fill").foregroundColor(.white)
                         }
-                            if isMessageShown{
-                                Button("Escolher pessoa", action:{})
-                            }
-                        
-                    }
-                        
-                    Section{
-                        HStack{
-                            ZStack{
-                                Rectangle().frame(width:27,height: 27).foregroundColor(.orange).cornerRadius(7)
-                                Image(systemName: "flag.fill").foregroundColor(.white)
-                            }
-                            VStack{
-                                Toggle("Sinalizar", isOn: $isSinalizarShown)
-                                
-                            }
+                        VStack{
+                            Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
+                            
                         }
-                        
                     }
+                        if isMessageShown{
+                            Button("Escolher pessoa", action:{})
+                        }
+                    
+                }
+                        
+                Section{
+                    HStack{
+                        ZStack{
+                            Rectangle().frame(width:27,height: 27).foregroundColor(.orange).cornerRadius(7)
+                            Image(systemName: "flag.fill").foregroundColor(.white)
+                        }
+                        VStack{
+                            Toggle("Sinalizar", isOn: $isSinalizarShown)
+                            
+                        }
+                    }
+                    
+                }
                 }
                 }
                 Section{
@@ -237,15 +263,28 @@ struct MiniDetalhesView: View {
                     
 
                 }
-                                Section{
-                    Button("Adicionar Imagem",action: {
-                        
-                        
-                    })
-                }
                 Section{
+                    Menu {
+                        Button (action: {
+                            
+                        }) {
+                            Label("Tirar Foto", systemImage: "camera")
+                        }
+                        Button(action: {
+                        }){
+                            Label("Escanear Documento",systemImage: "doc.viewfinder")
+                        }
+                        Button(action: {
+                            
+                        }) {
+                            Label("Fototeca", systemImage: "photo.on.rectangle")
+                        }
+                    } label: {
+                        Text("Adicionar Imagem")
+                    }
+}
+                
                     TextField("URL", text: $trik)
-                }
                 
                 
                 

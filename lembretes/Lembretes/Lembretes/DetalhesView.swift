@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetalhesView: View {
+   
     @Environment(\.dismiss) var dismiss
     @State private var selectedDate = Date()
     @State private var selectedTime = Date()
@@ -21,7 +22,8 @@ struct DetalhesView: View {
     @State private var name = "Novo lembrete"
     @State var notas = ""
     @State var linki = ""
-    @State private var valueToModify = ""
+    @State private var valueToModify = "Nunca"
+    @State private var EndRepeat1 = "Nunca"
     @State var selectedOption = 0
     var localiz = "Cidade Universitaria Campinas SP 13083-898 Brasil"
     let options = ["Nenhuma","Baixa","Média","Alta"]
@@ -47,6 +49,10 @@ struct DetalhesView: View {
                     TextField("Notas", text: $notas)
                     TextField("URL", text: $linki)
                 }
+
+                
+                
+
                 Section{
                     HStack{
                         
@@ -55,10 +61,17 @@ struct DetalhesView: View {
                             Image(systemName: "calendar").resizable().foregroundColor(.white).frame(width:10,height:10)
                         }
                         VStack(spacing:0.01){
-                            Toggle("Data", isOn: $isCalendarShown)
-                            HStack{
-                                Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.subheadline)
-                                Spacer()
+                            Toggle(isOn: $isCalendarShown){
+                                VStack{
+                                    HStack{
+                                        Text("Data")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.system(size:12))
+                                        Spacer()
+                                    }
+                                }
                             }
                         }
                     }
@@ -77,11 +90,20 @@ struct DetalhesView: View {
                             Image(systemName: "clock.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
                         }
                         VStack(spacing:0.01){
-                            Toggle("Horário", isOn: $isClockShown)
-                            HStack{
-                                Text("\(selectedTime, formatter: timeFormatter)").font(.subheadline).foregroundColor(.blue)
-                                Spacer()
+                            Toggle(isOn: $isClockShown){
+                                VStack{
+                                    HStack{
+                                        Text("Horário")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text("\(selectedTime, formatter: timeFormatter)").font(.system(size:12)).foregroundColor(.blue)
+                                        Spacer()
+                                    }
+                                    
+                                }
                             }
+                            
                         }
                     }
                     if isClockShown{
@@ -95,21 +117,31 @@ struct DetalhesView: View {
                 }
                 if isCalendarShown || isClockShown{
                     Section{
-                    HStack{
-                        ZStack{
-                            Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
-                            Image(systemName: "repeat").resizable().foregroundColor(.white).frame(width:10,height:10)
+                        HStack{
+                            ZStack{
+                                Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
+                                Image(systemName: "repeat").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                
+                            }
+                            NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
+                                HStack{
+                                    Text("Repetir")
+                                    Spacer()
+                                    Text("\(valueToModify)").foregroundColor(.gray)
+                                }
+                            }
                             
                         }
-                        NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
-                            HStack{
-                                Text("Repetir")
-                                Spacer()
-                                Text("\(valueToModify)").foregroundColor(.gray)
-                            }
-                        }
-                        
-                    }
+//                        if valueToModify != "Nunca"{
+//                            NavigationLink(destination: EndRepeat(EndRepeat1: $EndRepeat1)) {
+//                                HStack{
+//                                    Text("Terminar Repetição")
+//                                    Spacer()
+//                                    Text("\(EndRepeat1)").foregroundColor(.gray)
+//                                }
+//                            }
+//
+//                        }
                 }
                 }
                 Section{
@@ -130,11 +162,11 @@ struct DetalhesView: View {
                 }
                 Group{
                     Section{
-                        VStack{
+                        VStack(spacing:10){
                             HStack{
                                 ZStack{
                                     Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                                    Image(systemName: "location.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                    Image(systemName: "location.fill").foregroundColor(.white)
                                 }
                                 VStack{
                                     Toggle("Localização", isOn: $isLocationShown)
@@ -143,46 +175,54 @@ struct DetalhesView: View {
                                 }
                             }
                             if isLocationShown{
-                                HStack(spacing:24){
-                                    VStack{
+                                VStack{
+                                    HStack(spacing:20){
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "location.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Atual").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Entrar").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Sair").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "ellipsis").foregroundColor(.white)
                                             
                                         }
-                                        Text("Personalizada").font(.subheadline).frame(maxWidth: .infinity,maxHeight: .infinity)
+                                        
                                     }
-                                }.frame(maxWidth: .infinity,maxHeight: .infinity)
+                                    HStack(spacing:24){
+                                        ZStack{
+                                            Rectangle().foregroundColor(.blue).frame(width:40,height:20).cornerRadius(7)
+                                            Text("Atual").font(.system(size:12)).foregroundColor(.white).bold()
+                                            
+                                        }
+                                        Text("Ao Entrar").font(.system(size:12)).offset(x:13)
+                                        Text("Ao Sair").font(.system(size:12)).offset(x:22)
+                                        Text("Personalizada").font(.system(size:12)).offset(x:15)
+                                    }
+                                }
                                 
                             }
                         }
                         if isLocationShown{
                             HStack{
-                                Text("Ao chegar em: \(localiz)")
+                                Text("Ao chegar em: \(localiz)").foregroundColor(.gray)
                                 Image(systemName: "info.circle").foregroundColor(.blue)
                             }
                         }
@@ -288,7 +328,7 @@ struct DetalhesView: View {
                 
                 
                 
-            }
+            }.listStyle(.insetGrouped)
     }.navigationTitle("Detalhes")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
