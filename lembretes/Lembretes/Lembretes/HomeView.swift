@@ -138,6 +138,7 @@ struct HomeView: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Buscar")
+        
         }
     }
 }

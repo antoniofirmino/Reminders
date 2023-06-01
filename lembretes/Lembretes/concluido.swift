@@ -17,17 +17,19 @@ struct Concluido: View {
     private var reminders: FetchedResults<Reminder>
     
     
-    
+    @FocusState private var isNewReminderTextFieldFocused: Bool
     @State private var isSelected = false
     @State private var lembrete = ""
     @State private var showinfo = true
+    @State private var note = ""
+
     var body: some View {
         NavigationStack {
             List {
                 
                 VStack {
                     HStack (spacing: 0){
-                        Text("\(reminders.count) Concluído • ")
+                        Text("\(reminders.count) Concluídos • ")
                             .font(.headline)
                         
                         Text("Limpar")
@@ -63,6 +65,7 @@ struct Concluido: View {
                     .listRowSeparator(.hidden)
                 
                     .navigationTitle("Concluídos")
+                
                     .toolbar{
                         ToolbarItem{
                             Menu {
@@ -81,26 +84,49 @@ struct Concluido: View {
                                 Image(systemName: "ellipsis.circle")
                             }
                         }
+                        if isNewReminderTextFieldFocused {
+                            ToolbarItem {
+                                Button("OK") {
+                                    isNewReminderTextFieldFocused = false
+                                }
+                            }
+                        }
                     }
                 
                     ForEach(reminders) { reminder in
                         Button(action: {
-                            
-                                reminder.concluded = false
-                                do {
-                                    try viewContext.save()
-                                } catch {
-                                    // Tratar erros ao salvar
-                                    print("Erro ao salvar: \(error)")
-                                }
+                                                           
                             
                         }){
-                            HStack {
+                            HStack(alignment: .top) {
                                 Image(systemName: reminder.concluded ? "circle.fill" : "circle")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.gray)
                                     .font(.title)
+                                    .onTapGesture {
+                                        reminder.concluded = false
+                                        do {
+                                            try viewContext.save()
+                                        } catch {
+                                            // Tratar erros ao salvar
+                                            print("Erro ao salvar: \(error)")
+                                        }
+                                    }
                                 
-                                Text(reminder.text ?? "")
+                                VStack {
+                                    TextField("", text: Binding(
+                                        get: { reminder.text ?? "" },
+                                        set: { reminder.text = $0 }
+                                    ))
+                                    .foregroundColor(.gray)
+                                    
+                                    if isNewReminderTextFieldFocused {
+                                        TextField("Adicionar Nota", text: $note)
+                                    }
+                                    
+                                    TextField("Lembretes", text: $note)
+                                       
+                                    TextField("Concluído: Hoje às 7:34", text: $note)
+                                    }
                                 
                                 Spacer()
                             }
