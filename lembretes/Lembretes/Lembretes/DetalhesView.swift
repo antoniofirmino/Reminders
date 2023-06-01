@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct DetalhesView: View {
+   
     @Environment(\.dismiss) var dismiss
-    @State private var hasChanges = false
-    @State private var showingCancelConfirmation = false
     @State private var selectedDate = Date()
     @State private var selectedTime = Date()
     @State private var isCalendarShown = false
@@ -23,7 +22,8 @@ struct DetalhesView: View {
     @State private var name = "Novo lembrete"
     @State var notas = ""
     @State var linki = ""
-    @State private var valueToModify = ""
+    @State private var valueToModify = "Nunca"
+    @State private var EndRepeat1 = "Nunca"
     @State var selectedOption = 0
     var localiz = "Cidade Universitaria Campinas SP 13083-898 Brasil"
     let options = ["Nenhuma","Baixa","Média","Alta"]
@@ -46,33 +46,32 @@ struct DetalhesView: View {
             List{
                 Section{
                     TextField("Label", text: $name)
-                        .onChange(of: name) { _ in
-                            hasChanges = true
-                        }
                     TextField("Notas", text: $notas)
-                        .onChange(of: notas) { _ in
-                            hasChanges = true
-                        }
                     TextField("URL", text: $linki)
-                        .onChange(of: linki) { _ in
-                            hasChanges = true
-                        }
                 }
+
+                
+                
+
                 Section{
                     HStack{
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.red).cornerRadius(7)
-                            Image(systemName: "calendar").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "calendar").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
-                            Toggle("Data", isOn: $isCalendarShown)
-                                .onChange(of: isCalendarShown) { _ in
-                                    hasChanges = true
+                            Toggle(isOn: $isCalendarShown){
+                                VStack{
+                                    HStack{
+                                        Text("Data")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.system(size:12))
+                                        Spacer()
+                                    }
                                 }
-                            HStack{
-                                Text(dateFormatter.string(from: selectedDate)).foregroundColor(.blue).font(.subheadline)
-                                Spacer()
                             }
                         }
                     }
@@ -88,17 +87,23 @@ struct DetalhesView: View {
                         
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                            Image(systemName: "clock.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "clock.fill").foregroundColor(.white)
                         }
                         VStack(spacing:0.01){
-                            Toggle("Horário", isOn: $isClockShown)
-                                .onChange(of: isClockShown) { _ in
-                                    hasChanges = true
+                            Toggle(isOn: $isClockShown){
+                                VStack{
+                                    HStack{
+                                        Text("Horário")
+                                        Spacer()
+                                    }
+                                    HStack{
+                                        Text("\(selectedTime, formatter: timeFormatter)").font(.system(size:12)).foregroundColor(.blue)
+                                        Spacer()
+                                    }
+                                    
                                 }
-                            HStack{
-                                Text("\(selectedTime, formatter: timeFormatter)").font(.subheadline).foregroundColor(.blue)
-                                Spacer()
                             }
+                            
                         }
                     }
                     if isClockShown{
@@ -112,28 +117,38 @@ struct DetalhesView: View {
                 }
                 if isCalendarShown || isClockShown{
                     Section{
-                    HStack{
-                        ZStack{
-                            Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
-                            Image(systemName: "repeat").resizable().foregroundColor(.white).frame(width:10,height:10)
+                        HStack{
+                            ZStack{
+                                Rectangle().frame(width:27,height: 27).foregroundColor(Color(red:0.255, green:0.255, blue:0.271)).cornerRadius(7)
+                                Image(systemName: "repeat").foregroundColor(.white)
+                                
+                            }
+                            NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
+                                HStack{
+                                    Text("Repetir")
+                                    Spacer()
+                                    Text("\(valueToModify)").foregroundColor(.gray)
+                                }
+                            }
                             
                         }
-                        NavigationLink(destination: Repetir(valueToModify: $valueToModify)) {
-                            HStack{
-                                Text("Repetir")
-                                Spacer()
-                                Text("\(valueToModify)").foregroundColor(.gray)
-                            }
-                        }
-                        
-                    }
+//                        if valueToModify != "Nunca"{
+//                            NavigationLink(destination: EndRepeat(EndRepeat1: $EndRepeat1)) {
+//                                HStack{
+//                                    Text("Terminar Repetição")
+//                                    Spacer()
+//                                    Text("\(EndRepeat1)").foregroundColor(.gray)
+//                                }
+//                            }
+//
+//                        }
                 }
                 }
                 Section{
                     HStack{
                         ZStack{
                             Rectangle().frame(width:27,height: 27).foregroundColor(.gray).cornerRadius(7)
-                            Image(systemName: "number").resizable().foregroundColor(.white).frame(width:10,height:10)
+                            Image(systemName: "number").foregroundColor(.white)
                             
                         }
                         NavigationLink(destination: EtiquetasView()) {
@@ -147,61 +162,67 @@ struct DetalhesView: View {
                 }
                 Group{
                     Section{
-                        VStack{
+                        VStack(spacing:10){
                             HStack{
                                 ZStack{
                                     Rectangle().frame(width:27,height: 27).foregroundColor(.blue).cornerRadius(7)
-                                    Image(systemName: "location.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                    Image(systemName: "location.fill").foregroundColor(.white)
                                 }
                                 VStack{
                                     Toggle("Localização", isOn: $isLocationShown)
-                                        .onChange(of: isLocationShown) { _ in
-                                            hasChanges = true
-                                        }
+                                    
                                     
                                 }
                             }
                             if isLocationShown{
-                                HStack(spacing:24){
-                                    VStack{
+                                VStack{
+                                    HStack(spacing:20){
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "location.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Atual").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Entrar").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.blue)
                                             Image(systemName: "car.fill").foregroundColor(.white)
                                             
                                         }
-                                        Text("Ao Sair").font(.subheadline)
-                                    }
-                                    VStack{
+                                        
+                                        
                                         ZStack{
                                             Circle().frame(width: 60,height:60).foregroundColor(.gray)
                                             Image(systemName: "ellipsis").foregroundColor(.white)
                                             
                                         }
-                                        Text("Personalizada").font(.subheadline).frame(maxWidth: .infinity,maxHeight: .infinity)
+                                        
                                     }
-                                }.frame(maxWidth: .infinity,maxHeight: .infinity)
+                                    HStack(spacing:24){
+                                        ZStack{
+                                            Rectangle().foregroundColor(.blue).frame(width:40,height:20).cornerRadius(7)
+                                            Text("Atual").font(.system(size:12)).foregroundColor(.white).bold()
+                                            
+                                        }
+                                        Text("Ao Entrar").font(.system(size:12)).offset(x:13)
+                                        Text("Ao Sair").font(.system(size:12)).offset(x:22)
+                                        Text("Personalizada").font(.system(size:12)).offset(x:15)
+                                    }
+                                }
                                 
                             }
                         }
                         if isLocationShown{
                             HStack{
-                                Text("Ao chegar em: \(localiz)")
+                                Text("Ao chegar em: \(localiz)").foregroundColor(.gray)
                                 Image(systemName: "info.circle").foregroundColor(.blue)
                             }
                         }
@@ -219,13 +240,11 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.green).cornerRadius(7)
-                                Image(systemName: "message.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "message.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Ao Enviar Mensagem", isOn: $isMessageShown)
-                                    .onChange(of: isMessageShown) { _ in
-                                        hasChanges = true
-                                    }
+                                
                             }
                         }
                             if isMessageShown{
@@ -238,13 +257,10 @@ struct DetalhesView: View {
                         HStack{
                             ZStack{
                                 Rectangle().frame(width:27,height: 27).foregroundColor(.orange).cornerRadius(7)
-                                Image(systemName: "flag.fill").resizable().foregroundColor(.white).frame(width:10,height:10)
+                                Image(systemName: "flag.fill").foregroundColor(.white)
                             }
                             VStack{
                                 Toggle("Sinalizar", isOn: $isSinalizarShown)
-                                    .onChange(of: isSinalizarShown) { _ in
-                                        hasChanges = true
-                                    }
                                 
                             }
                         }
@@ -261,9 +277,6 @@ struct DetalhesView: View {
                                         Text(options[index])
                                     }
                                 }
-                        .onChange(of: selectedOption) { _ in
-                            hasChanges = true
-                        }
                         NavigationLink(destination: ListaView()) {
                             HStack{
                                 Text("Lista")
@@ -315,30 +328,23 @@ struct DetalhesView: View {
                 
                 
                 
-            }
+            }.listStyle(.insetGrouped)
     }.navigationTitle("Detalhes")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        if hasChanges {
-                            showingCancelConfirmation = true
-                        } else {
-                            dismiss()
-                        }
-                        
+                        dismiss()
+
                     }, label: {
                         Text("Cancelar")
                     })
-                    .confirmationDialog("", isPresented: $showingCancelConfirmation) {
-                        Button("Descartar Alterações", role: .destructive, action: dismiss.callAsFunction)
-                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         dismiss()
-                        
-                        
+
+
                     }, label: {
                         Text("OK")
                     })
