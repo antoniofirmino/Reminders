@@ -7,6 +7,10 @@
 
 import SwiftUI
    
+enum Focusable: Hashable {
+  case none
+  case row(id: String)
+}
 
 struct TodosView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -17,8 +21,11 @@ struct TodosView: View {
     private var reminders: FetchedResults<Reminder>
     
     @FocusState private var isNewReminderTextFieldFocused: Bool
+    @FocusState private var focusedReminderTextField: Focusable?
     @State private var lembrete = ""
     @State private var note = ""
+    @State private var editReminder = ""
+    @State private var editNote = ""
     @State private var showinfo = false
     
     var body: some View {
@@ -35,9 +42,47 @@ struct TodosView: View {
                 }
                     .listRowSeparator(.hidden)
                 
+                ForEach(Array(reminders.enumerated()), id: \.offset) { index, reminder in
+                    HStack(alignment: focusedReminderTextField == .row(id: "\(index)") ? .top : .center) {
+                        Image(systemName: "circle")
+                            .foregroundColor(.gray)
+                            .font(.title)
+                            .padding(.leading)
+                            .onTapGesture {
+                                // save as concluded on CoreData
+                            }
+                        
+                        if focusedReminderTextField == .row(id: "\(index)") {
+                            VStack {
+                                TextField("", text: $editReminder)
+                                    .font(.body)
+                                    .multilineTextAlignment(.leading)
+                                    .focused($focusedReminderTextField, equals: .row(id: "\(index)"))
+                                
+                                TextField("Adicionar Nota", text: $editNote)
+                            }
+                        } else {
+                            Text(reminder.text ?? "")
+                                .onTapGesture {
+                                    editReminder = reminder.text ?? ""
+                                    editNote = ""
+                                    focusedReminderTextField = .row(id: "\(index)")
+                                }
+                        }
+                        
+                        Image(systemName: "info.circle")
+                            .foregroundColor(.blue)
+                            .font(.title)
+                            .onTapGesture {
+                                showinfo.toggle()
+                            }
+                            .opacity(focusedReminderTextField == .row(id: "\(index)") ? 1 : 0)
+                    }
+                }
+                
                 HStack(alignment: .top) {
                     Image(systemName: "circle.dotted")
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color(UIColor.lightGray))
                         .font(.title)
                         .padding(.leading)
                         .onTapGesture {
@@ -117,6 +162,7 @@ struct TodosView: View {
     struct todos_Previews: PreviewProvider {
         static var previews: some View {
             TodosView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }
 }
