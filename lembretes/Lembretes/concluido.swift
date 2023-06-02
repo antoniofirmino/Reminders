@@ -11,7 +11,7 @@ struct Concluido: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.text, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.timestamp, ascending: true)],
         predicate: NSPredicate(format: "concluded == true"),
         animation: .default)
     private var reminders: FetchedResults<Reminder>
@@ -61,37 +61,9 @@ struct Concluido: View {
                 .listRowSeparator(.hidden)
                 
                 
-                Spacer()
+                Text("Hoje")
+                    .font(.title2.bold())
                     .listRowSeparator(.hidden)
-                
-                    .navigationTitle("Concluídos")
-                
-                    .toolbar{
-                        ToolbarItem{
-                            Menu {
-                                Button (action: {
-                                    
-                                }) {
-                                    Label("Selecionar Lembretes", systemImage: "checkmark.circle")
-                                    
-                                }
-                                Button (action: {
-                                    
-                                }) {
-                                    Label("Imprimir", systemImage: "printer")
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
-                            }
-                        }
-                        if isNewReminderTextFieldFocused {
-                            ToolbarItem {
-                                Button("OK") {
-                                    isNewReminderTextFieldFocused = false
-                                }
-                            }
-                        }
-                    }
                 
                     ForEach(reminders) { reminder in
                         Button(action: {
@@ -99,18 +71,23 @@ struct Concluido: View {
                             
                         }){
                             HStack(alignment: .top) {
-                                Image(systemName: reminder.concluded ? "circle.fill" : "circle")
-                                    .foregroundColor(.gray)
-                                    .font(.title)
-                                    .onTapGesture {
-                                        reminder.concluded = false
-                                        do {
-                                            try viewContext.save()
-                                        } catch {
-                                            // Tratar erros ao salvar
-                                            print("Erro ao salvar: \(error)")
-                                        }
+                                ZStack {
+                                    Image(systemName: "circle")
+                                        .foregroundColor(.gray)
+                                        .font(.title)
+                                    Image(systemName: "circle.fill")
+                                        .foregroundColor(.gray)
+                                        .font(.title3)
+                                }
+                                .onTapGesture {
+                                    reminder.concluded = false
+                                    do {
+                                        try viewContext.save()
+                                    } catch {
+                                        // Tratar erros ao salvar
+                                        print("Erro ao salvar: \(error)")
                                     }
+                                }
                                 
                                 VStack {
                                     TextField("", text: Binding(
@@ -119,13 +96,11 @@ struct Concluido: View {
                                     ))
                                     .foregroundColor(.gray)
                                     
-                                    if isNewReminderTextFieldFocused {
-                                        TextField("Adicionar Nota", text: $note)
-                                    }
-                                    
                                     TextField("Lembretes", text: $note)
+                                        .padding(.top, -4)
                                        
                                     TextField("Concluído: Hoje às 7:34", text: $note)
+                                        .padding(.top, -8)
                                     }
                                 
                                 Spacer()
@@ -144,6 +119,10 @@ struct Concluido: View {
                                }
                             
                             }
+                            Button("Sinalizar"){}
+                                .tint(.orange)
+                            Button("Detalhes"){}
+                                .tint(.gray)
                         }
                     }
                 
@@ -151,6 +130,34 @@ struct Concluido: View {
                 
             }
             .listStyle(.plain)
+            .navigationTitle("Concluídos")
+        
+            .toolbar{
+                ToolbarItem{
+                    Menu {
+                        Button (action: {
+                            
+                        }) {
+                            Label("Selecionar Lembretes", systemImage: "checkmark.circle")
+                            
+                        }
+                        Button (action: {
+                            
+                        }) {
+                            Label("Imprimir", systemImage: "printer")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
+                if isNewReminderTextFieldFocused {
+                    ToolbarItem {
+                        Button("OK") {
+                            isNewReminderTextFieldFocused = false
+                        }
+                    }
+                }
+            }
         }
         
     }

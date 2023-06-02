@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NovoLembreteView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
     
     @State private var title = ""
@@ -99,8 +100,13 @@ struct NovoLembreteView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        
-                        
+                        let newReminder = Reminder(context: viewContext)
+                        newReminder.concluded = false
+                        newReminder.text = title
+                        newReminder.id = UUID()
+                        newReminder.timestamp = Date()
+                        try? viewContext.save()
+                        dismiss()
                     }, label: {
                         Text("Adicionar")
                     }).disabled(!hasChanges)

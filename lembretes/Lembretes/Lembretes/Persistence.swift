@@ -15,8 +15,10 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for i in 0..<10 {
             let newReminder = Reminder(context: viewContext)
-            newReminder.concluded = true
+            newReminder.concluded = false
             newReminder.text = "Novo Lembrete \(i)"
+            newReminder.id = UUID()
+            newReminder.timestamp = Date()
         }
         do {
             try viewContext.save()

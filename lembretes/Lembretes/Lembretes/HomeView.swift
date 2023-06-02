@@ -12,7 +12,8 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.text, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Reminder.timestamp, ascending: true)],
+        predicate: NSPredicate(format: "concluded == false"),
         animation: .default)
     private var reminders: FetchedResults<Reminder>
     
@@ -93,14 +94,48 @@ struct HomeView: View {
                     Spacer()
                         .listSectionSeparator(.hidden)
                 } else {
-                    Text("Resultados da Busca")
+                    List {
+                        VStack {
+                            HStack (spacing: 0){
+                                Text("\(reminders.count) Concluídos • ")
+                                    .font(.headline)
+                                
+                                Text("Limpar")
+                                    .font(.headline)
+                                    .foregroundColor(.blue)
+                                    .onTapGesture {
+                                        // Excluir o registro
+                                        reminders.forEach({reminder in
+                                            viewContext.delete(reminder)}
+                                        )
+                                                   
+                                       // Salvar as mudanças no contexto
+                                       do {
+                                           try viewContext.save()
+                                       } catch {
+                                           // Tratar erros ao salvar
+                                           print("Erro ao salvar: \(error)")
+                                       }
+                                    }
+                                
+                                Spacer()
+                            }
+                            
+                            Divider()
+                            
+                            
+                            
+                        }
+                        .listRowSeparator(.hidden)
+                    }
+                    .listStyle(.plain)
                 }
             }
             .listStyle(.plain)
             .sheet(isPresented: $showingNewReminder) {
                 NavigationStack{
                     NovoLembreteView()
-                    
+                        .environment(\.managedObjectContext, viewContext)
                 }
             }
             .toolbar {

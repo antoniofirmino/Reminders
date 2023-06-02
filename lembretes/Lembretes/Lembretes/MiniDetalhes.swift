@@ -292,6 +292,15 @@ struct MiniDetalhesView: View {
                 
             }
         }.navigationTitle("Detalhes")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+
+                    }, label: {
+                        Text("Adicionar")
+                    }).disabled(true)
+                }
+            }
 
     }
 }
