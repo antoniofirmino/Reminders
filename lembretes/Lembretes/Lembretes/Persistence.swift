@@ -16,7 +16,7 @@ struct PersistenceController {
         for i in 0..<10 {
             let newReminder = Reminder(context: viewContext)
             newReminder.concluded = false
-            newReminder.text = "Novo Lembrete \(i)"
+            newReminder.text = "Novo Lembrete Alterado\(i)"
             newReminder.id = UUID()
             newReminder.timestamp = Date()
         }
